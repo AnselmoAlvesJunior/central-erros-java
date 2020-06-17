@@ -1,6 +1,7 @@
 package com.codenation.repository;
 
 import com.codenation.entity.LogError;
+import com.codenation.enums.Level;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,6 +13,5 @@ public interface LogRepository extends JpaRepository<LogError,Long> {
 
     Optional<LogError> findById(Long id);
 
-    @Query("SELECT ")
-    List<LogError> findByDate(Date dateLog);
+    List<LogError> findByLevel(Level level);
 }

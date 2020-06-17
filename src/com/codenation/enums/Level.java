@@ -1,13 +1,13 @@
 package com.codenation.enums;
 
-public enum LogErrorEnum {
+public enum Level {
     ERROR("error"),
     WARNING("warning"),
     INFO("info");
 
     private String type;
 
-    LogErrorEnum(String type){
+    Level(String type){
         this.type=type;
     }
     public String getType(){

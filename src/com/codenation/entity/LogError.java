@@ -1,8 +1,7 @@
 package com.codenation.entity;
 
-import com.codenation.enums.LogErrorEnum;
+import com.codenation.enums.Level;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -22,12 +21,11 @@ import java.util.List;
 @Table(name="logs")
 public class LogError {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private LogErrorPk id;
 
     @Enumerated(EnumType.STRING)
-    private LogErrorEnum level;
+    private Level level;
 
     @Column
     @NotNull
@@ -44,9 +42,12 @@ public class LogError {
     @Column
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date dateLog;
+    private LocalDateTime dateLog;
 
-    @JsonIgnore
-    @ManyToOne
-    private List<User> user;
+    public LogError(LogErrorPk id, Level level, LocalDateTime dateLog) {
+        this.id = id;
+        this.level = level;
+        this.dateLog = dateLog;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.codenation.service.impl;
 
 import com.codenation.entity.LogError;
+import com.codenation.enums.Level;
 import com.codenation.repository.LogRepository;
 import com.codenation.service.interfaces.LogServiceInterface;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class LogService implements LogServiceInterface {
     }
 
     @Override
-    public List<LogError> findByDate(Date dateLog) {
-        return logRepository.findByDate(dateLog);
+    public List<LogError> findByLevel(Level level) {
+        return logRepository.findByLevel(level);
     }
 }

@@ -14,6 +14,7 @@ public class UserService implements UserServiceInterface, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public Optional<User> findById(Long userId) {
         return userRepository.findById(userId);
