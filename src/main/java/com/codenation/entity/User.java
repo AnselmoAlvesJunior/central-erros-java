@@ -46,22 +46,10 @@ public class User implements UserDetails {
     @NotNull
     private String password;
 
-    public User(Long id, @NotNull String fullName, @Email @Size(max = 100) @NotNull String email, @NotNull String password, LocalDateTime createdAt) {
-        this.id = id;
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-        this.createdAt = createdAt;
-    }
-
     @Column
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdAt;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "id.user")
-    private List<LogError> logErrors;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

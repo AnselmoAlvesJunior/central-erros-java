@@ -21,8 +21,9 @@ import java.util.Date;
 @Table(name="logs")
 public class LogError {
 
-    @EmbeddedId
-    private LogErrorPk id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private Level level;
@@ -44,7 +45,7 @@ public class LogError {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateLog;
 
-    public LogError(LogErrorPk id, Level level, LocalDateTime dateLog) {
+    public LogError(Long id, Level level, LocalDateTime dateLog) {
         this.id = id;
         this.level = level;
         this.dateLog = dateLog;
