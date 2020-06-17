@@ -1,6 +1,7 @@
 package com.codenation;
 import com.codenation.entity.LogError;
 import com.codenation.entity.User;
+import com.codenation.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -20,4 +21,6 @@ public class CentralErrorApplication {
 
     User user=new User(null,"usuario1","teste1@email.com","123456", LocalDateTime.now());
     LogError logError=new LogError(null,WARNING, LocalDateTime.now());
+
+
 }

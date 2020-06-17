@@ -3,13 +3,17 @@ package com.codenation.service.impl;
 import com.codenation.entity.User;
 import com.codenation.repository.UserRepository;
 import com.codenation.service.interfaces.UserServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class UserService implements UserServiceInterface, UserDetailsService {
 
     @Autowired
